@@ -1,0 +1,45 @@
+#Question 9: Write a function that computes the determinant of a matrix of size n by n where n <= 10
+
+from sympy import *
+from numpy import *
+
+M = Matrix([[-7,-5,1], [4,1,1], [-1,2,1]])
+#just a random matrix to check if code worked
+
+def get_determinant(M):
+	if M.shape < (11,11): #if M has n by n that's less than 11 by 11, return the determinant. 
+		return M.det()
+
+print "The determinant of Matrix M is: " + str(get_determinant(M))
+
+#Question 10: Write a function that computes the area of a triangle given 3 points. 
+
+a = [-7, -5] #just some random points to check if code worked
+a.append(1) #need to append a third point, 1
+b = [4, 1]
+b.append(1)
+c = [-1, 2]
+c.append(1)
+
+three_points = Matrix([a, b, c])
+
+def find_area(three_points):
+	determinant = three_points.det()
+	area = determinant * .5 #area of a triangle is its points' determinant divided in half
+	return float(area)
+
+a.pop() #removing the added 1 in order for answer sentence to make sense
+b.pop()
+c.pop()
+
+print "The area of a triangle with the three points" + " "+str(a) + ", " + str(b) + ", and " + str(c) + " is: " + str(find_area(three_points))
+
+#Question 11: Find the eigenvectors and eigenvalues of the following matrix using python
+
+M = Matrix([[4,3,2], [1,2,6], [5,8,1]])
+
+Eigenvalues = M.eigenvals()
+Eigenvectors = M.eigenvects()
+
+print "The Eigenvalues of Matrix M are " + str(Eigenvalues)
+print "The Eigenvectors of Matrix M are " + str(Eigenvectors)
